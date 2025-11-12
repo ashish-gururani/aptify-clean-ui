@@ -1,0 +1,18 @@
+<!-- By Ashish Gururani - updated the animation to be a loading ring -->
+<svg width="16" height="16" viewBox="0 0 16 16" xmlns="http://www.w3.org/2000/svg">
+  <!-- Background track -->
+  <circle cx="8" cy="8" r="6" fill="none" stroke="#ddd" stroke-width="4"/>
+  
+  <!-- Spinner ring -->
+  <circle cx="8" cy="8" r="6" fill="none" stroke="url(#blueGradSmall)" stroke-width="4" stroke-linecap="round"
+          stroke-dasharray="18.8 37.6" stroke-dashoffset="0">
+    <animateTransform attributeName="transform" type="rotate" from="0 8 8" to="360 8 8" dur="1s" repeatCount="indefinite"/>
+  </circle>
+  
+  <defs>
+    <linearGradient id="blueGradSmall" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#2095F2"/>
+      <stop offset="100%" stop-color="#72b1f4"/>
+    </linearGradient>
+  </defs>
+</svg>
