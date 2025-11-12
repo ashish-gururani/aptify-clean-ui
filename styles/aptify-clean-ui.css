@@ -1,0 +1,1355 @@
+/*====================================================================================================*/
+/*Css updates and overrides to make the UI cleaner, align better and provide a better UX experience   */
+/*Created By: Ashish Gururani
+/*Date: 11/12/2025*/
+/*====================================================================================================*/
+
+:root {
+  /*--app-blue: #4869da; darker blue that looks nicer*/
+  --app-blue: #488bd2; /*already used in app so they match up instead of changing the exsiting ones*/
+  --app-red: #9C4C43;
+  --app-selected-menu-background: #f0f1f2;
+  --app-font-color: #344455;
+  --app-icon-color: #8596A6;
+  --app-icon-hover--background-color: #e6dfdf;
+  --app-box-shadow: 0 2px 6px rgba(0, 0, 0, 0.08),0 8px 24px rgba(0, 0, 0, 0.12);
+  --app-box-shadow-darker-background: 2px 2px 6px rgba(0, 0, 0, 0.08),4px 8px 24px rgba(0, 0, 0, 0.12),-4px 0 12px rgba(255, 255, 255, 0.12),-2px 0 6px rgba(255, 255, 255, 0.08);
+}
+
+.a-shell-logo-left {
+    height: 45px !important;
+    padding: 0px 0 0 5px !important;
+}
+.a-logo-div {
+    width: unset !important;
+}
+
+
+/*================================================== change main menu styling ==================================================*/
+.a-shell-app-list li.k-item span.k-link {
+	line-height: 1em;
+    margin-right: 14px;
+}
+.a-shell-app-list .a-shell-item-header {
+	line-height: 1em;
+}
+/*width of the inner container in the menu. It was previously width: calc(100% - 16px - 4px) which seems unnecessary and leaves whitespace at the end*/
+.a-shell-app-list>li.k-item .a-shell-item-header {
+	width: 100%;
+}
+.a-shell-app-list>li.k-item .a-shell-item-header span {
+    width: calc(100% - 24px - 4px);
+}
+.a-shell-item-header:hover {
+    background-color: var(--app-selected-menu-background) !important;
+}
+.a-shell-item-header {
+    padding: 6px;
+    border-radius: 3px;
+}
+.a-shell-item-header span {
+  padding-top: 1px;
+  padding-bottom: 1px;
+}
+/*Manage Services button at the bottom*/
+.a-shell-toolbar-showconfigureapplications, .a-shell-toolbar-showConfigureServices {
+    margin-top: 10px;
+}
+#aptify_shell_panelBarParent .applist-title .a-shell-slideout-icon {
+    display: none !important;
+}
+#aptify_shell_panelBarParent .applist-title {
+    padding-left: 10px;
+    font-weight: 500;
+}
+#aptify_shell_panelBarParent .applist-title .menu-name .fa.fa-chevron-left.a-back-app-icon {
+    padding: 0 10px 1px 0px !important; 
+}
+#aptify_shell_panelBarParent .a-shell-app-list i { /*icon color*/
+    color: #5B6D7F !important;
+}
+#aptify_shell_panelBarParent .menu-name:not(:has(span))::before {
+  font-family: "FontAwesome";
+  content: "\f015";
+  margin-right: 9px;
+  font-size: 22px;
+  display: inline-block;
+  vertical-align: middle;
+  margin-bottom: 3px;
+}
+
+
+/*================================================== sub menu styling ==================================================*/
+.a-shell-item {
+	line-height: 1.1em;
+    padding: 6px;
+    border-radius: 3px;
+    margin-top: 1px;
+    margin-bottom: 1px;
+}
+.a-shell-item:hover {
+    background-color: var(--app-selected-menu-background) !important;
+}
+.k-state-selected > .k-link, .k-panelbar > li > .k-state-selected, .k-panelbar > li.k-state-default > .k-link.k-state-selected {
+    background: none;
+}
+.k-link.k-header:not(.k-state-selected) .a-shell-item-header {
+  margin-left: -7px !important;
+}
+.k-link.k-header.k-state-selected .a-shell-item-header {
+    background-color: var(--app-selected-menu-background);
+    border-left: solid 5px var(--app-blue) !important;
+}
+.a-shell-app-list li.k-item span.k-state-selected {
+    background: none;
+    font-weight: normal;
+    border-left: none;
+}
+.k-link.k-state-selected .a-shell-item {    
+    background-color: var(--app-selected-menu-background);
+    border-left: solid 5px var(--app-blue);
+}
+.a-shell-app-list span.k-link.k-state-selected .a-shell-item {
+    margin-left: -5px;
+} 
+.a-shell-item span {
+    display: block;
+    text-overflow: ellipsis;
+    overflow: hidden;
+    white-space: nowrap;
+    vertical-align: middle;
+}
+.k-item.k-state-active .a-shell-item-header > span {
+    font-weight: 500;
+}
+.k-group.k-panel {
+    border-bottom: none; /*remove the bottom border line on submenu*/
+}
+/*disable the collape and expantion of the hamburger menu because that features needs changes to too many other things*/
+.a-shell-slideout-icon {
+    pointer-events: none; /* prevents any click or hover */
+    cursor: default;      /* optional: show normal cursor */
+}
+.a-shell-slideout-icon-back {
+	visibility: hidden;
+}
+
+
+/*================================================== Main structure of the page ==================================================*/
+.main-container {
+    background-color: #FFFFFF !important;
+}
+.aptify-shell-header {
+
+}
+/* Left menu */
+.a-shell-slide-out {
+    width: 280px !important;
+    box-shadow: none !important;
+	border-right: solid 1px #e2e6ed !important;
+}
+/* Main content area */
+.a-shell-main {
+    width: calc(100% - 280px) !important;
+}
+
+
+/*================================================== global search and cards edits ==================================================*/
+.a-card, .k-list-container {
+    box-shadow: none;
+}
+.k-list-container.k-popup.k-group.k-reset.k-state-border-up {
+    box-shadow: var(--app-box-shadow) !important;
+    border-radius: 6px;
+}
+/*On search card the button is too close to the cards, make the height shorter to align better*/
+.k-button.a-search-more-button {
+    height: 28px;
+}
+/*link box search cards*/
+.k-list-scroller .a-card.k-widget {
+    border-radius: 3px !important;
+}
+
+
+/*================================================== content area ==================================================*/
+/*grid row padding is too much*/
+.k-grid td {
+    padding: 5px;
+}
+/*reduce pager padding*/
+.k-pager-wrap {
+    padding-top: 3px;
+    padding-bottom: 3px;
+}
+/*reduce padding for inner container*/
+#aptify_shell_tabstrip {
+    padding: 6px 6px 6px 6px;
+}
+.aptify_shell_tabstrip_wrapper {
+    margin-left: 10px;
+    margin-right: 10px;
+}
+.a-shell-main.a-shell-main-no-toolbar, .a-viewSearch, .a-dashboard-layout, .a-dashboard-part, .a-tab-dashboard-layout, #aptify_shell_tabstrip, .k-grid-header {
+    background-color: #ffffff !important;
+}
+.a-toggleview-toolbar {
+    border-bottom: solid 1px #dddddd;
+}
+.a-view-navigate-panel, .a-view-navigate-panel.breadCrumb {
+    margin: 0 20px 0 10px;
+}
+/*hide copy dashboard icon. whats the point of creating a copy if you can't change it? causing duplicates*/
+.fa.fa-pie-chart.create-dashboard-icon {
+    display: none;
+}
+/*views and records toolbar icons*/
+.a-entityListView-toolbar,
+.a-viewContainer-toolbar,
+.a-ftl-toolbar.k-widget {
+    height: 38px !important;
+    display: flex !important;
+    align-items: center !important;
+}
+.a-entityListView-toolbar button,
+.a-viewContainer-toolbar button,
+.a-ftl-toolbar.k-widget button {
+    height: 32px !important;
+    width: 32px !important;
+    margin-right: 3px !important;
+    margin-left: 3px !important;
+    line-height: 32px !important;
+}
+.a-entityListView-toolbar button:hover,
+.a-viewContainer-toolbar button:hover,
+.a-ftl-toolbar.k-widget button:hover {
+    background-color: var(--app-icon-hover--background-color) !important;
+    border-radius: 50% !important;
+}
+.a-entityListView-toolbar button::before,
+.a-viewContainer-toolbar button::before
+.a-ftl-toolbar.k-widget button::before {
+    font-size: 18px !important;
+}
+/* Flex order rules */
+.a-entityListView-toolbar > *,
+.a-viewContainer-toolbar > *,
+.a-ftl-toolbar.k-widget > * {
+    order: 1;
+}
+/* Right-side buttons (favorites + pin) */
+.a-entityListView-toolbar .a-favorite-icon,
+.a-ftl-toolbar.k-widget .a-favorite-icon {
+    order: 2;
+    margin-left: auto !important;
+}
+.a-entityListView-toolbar .a-view-pin,
+.a-ftl-toolbar.k-widget .a-view-pin {
+    order: 2;
+}
+.a-viewContainer-toolbar .a-view-pin {
+    order: 2;
+    margin-left: auto !important;
+}
+/* Keep "Actions" menu in the left group */
+.a-entityListView-toolbar .a-toolbar-more-actions,
+.a-viewContainer-toolbar .a-toolbar-more-actions,
+.a-ftl-toolbar.k-widget .a-toolbar-more-actions {
+    order: 1;
+}
+.a-ftl-toolbar.k-widget .k-button.fa .fa::before {
+    top: 2px !important;
+    left: 19px !important;
+    font-size: 12px !important;
+}
+/*on new record form that is not saved yet, favorite and pin icon don't work. favorite is already hidden but clicking on pin does nothing which is a bug so hiding it
+.a-ftl-toolbar.k-widget:not(:has(.a-favorite-icon)) .a-view-pin {
+    display: none !important;
+}
+/*prompt row is not aligned properly*/
+.a-entityListView-prompt {
+    line-height: unset !important;
+    /*border: solid 1px;*/
+    margin-bottom: 0px;
+    display: flex;
+    align-items: center;
+}
+.a-entityListView-prompt .a-prompt {
+    display: flex;
+    align-items: center;
+    /*border: solid 1px;*/
+    margin-bottom: 6px !important;
+}
+.a-entityListView-prompt .a-prompt .a-prompt-label {
+    position: inherit;
+    font-weight: 500;
+    margin-right: 2px !important;
+}
+.a-entityListView-prompt .a-prompt-input-text.k-datepicker {
+    line-height: 2em !important;
+}
+.a-entityListView-prompt .a-prompt-buttons {
+    margin: 0 0 6px 10px !important;
+}
+/*grid headers make slightly less bold*/
+.k-grid-header .k-header .k-link {
+    font-weight: 500 !important;
+}
+/*align loading icon*/
+.k-autocomplete .k-i-loading, .k-multiselect .k-i-loading {
+    bottom: .7em !important;
+}
+.k-grid-header th.k-header, .k-filter-row th {
+    padding: 2px 9px !important;
+    font-weight: 500;
+}
+
+
+/*================================================== global search textbox on top ==================================================*/
+.a-search.k-input {
+    min-height: 2em !important;
+    margin-right: 2px; /*textbox is coming over the outer div borders*/
+}
+.a-search-wrapper {
+    min-height: 1em !important;
+    height: 34px !important;
+    min-width: 350px !important;
+}
+
+
+/*================================================== linkbox updates ==================================================*/
+/*align the search and delete icons of the linkbox*/
+.a-linkbox-button-group {
+    margin-top: 4.5px;
+    border: solid 1px #dddddd;
+    padding-left: 12px;
+    height: 2.27em;
+    border-top-right-radius: 4px;
+    border-bottom-right-radius: 4px;
+    background-color: #f0f0f0;
+}
+.ftp-field-r .ftp-linkbox-textbox {
+    width: 100%;
+    border-top-right-radius: 0px;
+    border-bottom-right-radius: 0px;
+    border-right: none;
+}
+.a-linkbox-button-group .k-button .fa {
+    color: #344456;
+    padding-top: 1px;
+}
+/*linkbox required field with red*/
+.k-input.a-invalid-field:not(.k-state-disabled) {
+    border-top-right-radius: 0px !important;
+    border-bottom-right-radius: 0px !important;
+    border-right: none !important;
+}
+.ftp-field:has(> input.a-invalid-field) .a-linkbox-button-group {
+  border: 1px solid red;
+}
+
+
+/*================================================== login page ==================================================*/
+.k-widget.k-window:has(.login_leftcontainerdiv) {
+    border: none !important;
+    box-shadow: none !important;
+}
+.login_leftcontainerdiv {
+    width: 100% !important;
+    background-color: #ffffff !important;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    min-height: 100vh;
+    transform: translateY(-10%);
+}
+.login_heightcontainer {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+}
+.login_footerdiv {
+    width: 500px !important;
+    max-width: 500px !important;
+    margin: 0;
+    margin-top: 30px;
+}
+.login_logodiv {
+    height: unset !important;;
+    padding-top: 0 !important;
+    margin-bottom: 50px !important;
+    width: 300px !important; /*change this to make logo bigger/smaller*/
+}
+.login_rightcontainerdiv {
+    display: none !important; /*hide for now, this has not been updated for years. If right container is being used then also remove width:100% from left container above*/
+}
+.login_wrapper  {
+    max-width: 600px !important;
+    width: 600px !important;
+}
+.login_formcontainerdiv {
+    border-radius: 10px !important;
+}
+.login_fieldlabel {
+    margin-top: 24px !important;
+}
+.login_button {
+    margin-top: 20px !important;
+}
+.login_authenticationselector {
+    border-radius: 4px !important;
+}
+.login_textfield, .login_button, .login_authenticationselector {
+    font-size: 16px !important;
+}
+
+.logout-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    min-height: 100vh;
+    transform: translateY(-20%);
+    padding-top: 0 !important;
+}
+.Aptify-logo-logout {
+    width: 300px;
+}
+.Aptify-logo-logout img {
+  max-width: 100%;
+}
+.logout-ret-login {
+    margin-left: 0px !important;
+    width: 300px !important;
+}
+.a-logoutPage {
+    background-color: #ffffff !important;
+}
+.logout-msg-div {
+    margin: 40px 0 40px 0 !important;
+}
+
+
+
+/*================================================== universal search popup that comes up on linkboxes too, any popup ==================================================*/
+.k-widget.k-window:has(> .k-window-titlebar) {
+    /*width: 900px !important;*/
+}
+.k-widget.k-window {
+    border-radius: 6px !important;
+    border: none !important;
+    box-shadow: var(--app-box-shadow) !important;
+}
+.k-window-content {
+    border-radius: 0 0 6px 6px !important;
+}
+.k-window-content.a-confirmation-wnd, .k-window-content.messagebox-popup {
+    border-radius: 0 6px 6px 0 !important;
+}
+.k-window .a-linkbox-serach-dropdown-container fieldset {
+    display: none !important; /*hide the base view description field, not needed, taking space*/
+}
+.a-advancesearch .a-linkbox-serach-dropdown-container .k-input {
+    line-height: 2em; /*the top search view entity dropdown is too squished, make it taller*/
+}
+.a-advancesearch .a-linkbox-serach-dropdown-container 
+.k-widget.k-dropdown.a-linkbox-search-dropdown.a-baseview {
+    margin-bottom: 5px; /*space after first dropdown field*/
+}
+.a-search-tabstrip {
+    height: calc(100% - 36px); /*recalcuate hight to make room as we removed some fields*/
+}
+/*filter input fields look weird with no height and not an easy way to tell if they need to be clicked on*/
+.a-advancesearch .a-filter-content.k-grid.k-widget.k-grid-display-block.k-editable
+.k-grid-content td[data-field="Field"] {
+    height: 20px;
+}
+.k-content.k-state-active 
+  .a-filter-content.k-grid 
+  .k-grid-content table tr td[data-field="Field"]::before {
+}
+.a-adv-search-buttons::before { /*add a message at the bottom as this screen is a bit confusing*/
+    content: "Select [Find] to show all records or choose filter(s) above";
+    padding-right: 10px;
+    color: #a3a3a3;
+}
+/*change pointer to indicate that the window can be dragged*/
+/* Entire title bar shows grab cursor */
+.k-window-titlebar {
+  cursor: move;
+  padding-left: 28px;
+}
+/* Keep it consistent while dragging */
+.k-window-titlebar:active {
+  cursor: move;
+}
+/* Make children (like the title text) inherit the grab cursor */
+.k-window-titlebar * {
+  cursor: inherit;
+}
+.k-window-titlebar .k-window-title {
+    margin-right: 60px; /*if long title, its overlapping with the close X button*/
+}
+/* Button override for the close button area */
+.k-window-titlebar .k-window-actions,
+.k-window-titlebar .k-window-actions * {
+  cursor: pointer; /* normal click cursor for the X button */
+}
+/*make the close X div full height so there is more room to click on X*/
+.k-window-actions {
+    /*display: flex;
+    height: 100%;
+    align-items: center;
+    justify-content: center;*/
+}
+/*creating the icon that displays that the window can be dragged*/
+.k-window-titlebar::before {
+  content: '';
+  position: absolute;
+  left: 10px;
+  top: 12px;
+  /*top: 50%;*/
+  transform: translateY(-50%);
+  width: 4px;
+  height: 4px;
+  background-color: #666;
+  border-radius: 50%;
+  box-shadow:
+    6px 0 #666,
+    0 6px #666,
+    6px 6px #666,
+    0 12px #666,
+    6px 12px #666;
+}
+/*help button on the popup has different classes, disable the hover effect and background*/
+.k-widget.k-window
+  > .k-window-titlebar
+  > .k-window-actions
+  > .k-button.k-bare.k-button-icon.k-window-action[aria-label="Help"] {
+    background: transparent !important;
+}
+.k-widget.k-window
+  > .k-window-titlebar
+  > .k-window-actions
+  > .k-button.k-bare.k-button-icon.k-window-action[aria-label="Help"]:hover:not(.k-state-disabled) {
+    background: transparent !important;
+    border: 0 !important;
+    color: unset !important;
+}
+ .k-widget.k-window
+  > .k-window-titlebar
+  > .k-window-actions
+  > .k-button.k-bare.k-button-icon.k-window-action[aria-label="Help"]:active:not(.k-state-disabled) {
+    color: unset !important;
+    padding: 2px !important;
+    border: 0 !important;
+    height: unset !important;
+ }
+.k-window-actions, .k-window-actions:active{
+    padding: 2px 0px 4px 3px;
+    border-radius: 4px;
+    margin-right: 6px;
+    margin-top: 1px;
+    margin-bottom: 1px;
+}
+.k-window-actions:hover {
+    background-color: var(--app-selected-menu-background);
+}
+.k-icon.k-i-close::before {
+    font-size: 1.2em !important;
+    color: #354555 !important;
+}
+.k-window-actions a.k-button[aria-label="Close"]:hover {
+    border: none !important; /* remove hover border */
+}
+.k-window-actions a.k-button[aria-label="Close"]:active {
+    height: initial !important;
+}
+.wizard-breadcrumb-wrapper {
+    margin-bottom: 6px;
+}
+/*bottom buttons*/
+.a-wizard-bottom {
+    height: 60px !important;
+    padding-top: 14px !important;
+}
+.a-wizard-bottom .a-wizard-button-bar .a-wizard-button-bar-section .k-button {
+    border: solid 1px var(--app-blue) !important;
+    font-size: 1em !important;
+    min-height: 30px !important;
+}
+.a-wizard-bottom .a-wizard-button-bar .a-wizard-button-bar-section .k-button:hover {
+    border: solid 1px #488BD2 !important;
+    background-color: #488BD2;
+    color: #fff;
+}
+.a-wizard-bottom .a-wizard-button-bar .a-wizard-button-bar-section .k-button .fa {
+    margin-top: 0 !important;
+    margin-right: 6px !important;
+}
+.a-wizard-bottom .a-wizard-button-bar .a-wizard-button-bar-section .k-button:hover .fa {
+    color: #fff !important;
+}
+/*lets try to show red accent on error messages*/
+.k-widget.k-window:has(> .messagebox-popup.k-window-content), .k-widget.k-window:has(> .k-window-content.a-confirmation-wnd) {
+    border-left: solid 5px var(--app-red) !important;
+    padding: 10px 10px 0px 10px !important;
+}
+.k-widget.k-window .fa.fa-exclamation-triangle, .k-widget.k-window .fa.fa-bullhorn, .k-widget.k-window .fa.fa-flag {
+    font-size: 40px; /*make the icon size bigger*/
+}
+.k-widget.k-window .a-confirmation-wnd, .k-widget.k-window .messagebox-popup.k-window-content {
+    background-color: #ffffff !important;
+}
+
+
+/*================================================== [Actions] menu button on the records, like a person record ==================================================*/
+.a-more-btn.k-menu>.k-item>span.k-link {
+    font-size: 1em !important; /*override a smaller size thats making the menu look out-of-place*/
+    padding-top: 5px !important;
+}
+.a-toolbar-more-actions .k-animation-container ul li {
+    padding: 1px 0 1px 0 !important; /*make horizontal spacing between menu items less*/
+    padding-left: 5px !important;
+}
+.k-group.k-menu-group.k-popup.k-reset.k-state-border-up {
+    box-shadow: var(--app-box-shadow) !important; /*shadow for menu outer box*/
+    border: 0 !important;
+    border-radius: 0px 0px 6px 6px !important;
+}
+.a-toolbar-more-actions .k-animation-container ul li:hover {
+    padding-left: 0px !important;
+    border-left: solid 5px var(--app-blue);
+    background-color: var(--app-selected-menu-background) !important;
+    border-radius: 3px;
+}
+/*text color change on hover is not needed*/
+.k-item.k-menu-item.k-state-default:hover .k-link.k-menu-link,
+.k-item.k-menu-item.k-state-default.k-state-hover .k-link.k-menu-link,
+.k-item.k-menu-item.k-state-default.k-state-selected .k-link.k-menu-link {
+      color: inherit !important;        /* keep same as parent */
+      text-decoration: none !important;
+}
+
+
+/*================================================== second level records menu on Person/Company record ==================================================*/
+.a-child-menus.a-formtab {
+    box-shadow: var(--app-box-shadow) !important; /*shadow for menu outer box*/
+    border-radius: 0px 0px 6px 6px !important;
+    border: 0 !important;
+    margin-left: 4px;
+}
+.a-child-menus .a-single-menu {
+    line-height: 1.85em; /*make horizontal spacing between menu items less*/
+}
+.a-single-menu.a-menu-clickable.k-link {
+    border-radius: 3px;
+}
+.a-single-menu {
+    padding-left: 15px;
+    padding-right: 10px;
+}
+/*unset bold because other top level items are not bold so it's confusing to be bold for only top level items with children*/
+.a-single-menu:not(.a-menu-clickable) {
+    font-weight: unset !important;
+    color: #859686 !important; /*set a different color so they look disabled as they cannot be clickd on*/
+}
+/*class for top level items that are clickable i.e. with no children*/
+.a-child-menus .a-menu-column > .a-menu-clickable {
+    font-size: 14.5px !important;
+}
+/*class for clild items that are clickable*/
+.a-single-menu:not(.k-link) > .a-single-menu.k-link {
+    font-size: 14.5px !important;
+}
+/*hover styles*/
+.a-single-menu.a-menu-clickable.k-link:hover {
+    padding-left: 10px;
+    border-left: solid 5px var(--app-blue);
+    background-color: var(--app-selected-menu-background) !important;
+}
+.k-header.a-current-menu .k-icon.k-i-arrow-s::before {
+    font-size: 20px !important;
+}
+
+
+/*================================================== address popup menu on Person form  ==================================================*/
+.iconDataContainer .iconContainer {
+    box-shadow: var(--app-box-shadow) !important; /*shadow for menu outer box*/
+    border-radius: 6px 6px 6px 6px !important;
+    border: 0 !important;
+    width: 325px; !important;
+}
+.iconDataContainer .iconContainer > div {
+    padding-left: 5px !important;
+}
+.iconDataContainer .iconContainer > div:hover {
+    padding-left: 0px !important;
+    border-left: solid 5px var(--app-blue);
+    background-color: var(--app-selected-menu-background) !important;
+    border-radius: 3px;
+}
+.iconDataContainer .iconContainer > div > a {
+    display: block;
+    width: 100%;
+    height: 100%;
+}
+
+
+/*================================================== linked record cards with no cards set? so they long look the same format as person or company  ==================================================*/
+.a-generated-card-box {
+    box-shadow: var(--app-box-shadow) !important;
+    border: 0 !important;
+    margin-top: 8px !important;
+    border-left: solid 5px var(--app-blue) !important;
+}
+.a-generated-card-box .a-card-field-table.k-widget.a-table-pad {
+    border-radius: 6px !important;
+}
+.a-generated-card-box .a-card-field-table-field-name span {
+    white-space: nowrap;
+    margin-right: 10px;
+}
+
+
+/*================================================== pin bar changes ==================================================*/
+.a-pin-bar-main-wrapper .k-widget {
+    border-left: 0; /*don't need it anymore, causing double border*/
+}
+.a-pinned-views-title {
+    display: none;
+}
+.k-menu-scroll-wrapper {
+  display: flex;
+  align-items: center;
+}
+.k-menu-scroll-wrapper:has(.k-item.k-state-default.a-tabbed-menu-item)::before {
+  content: "\f08d";
+  font-family: "FontAwesome"; /* FA 4.7 */
+  font-weight: normal;
+  color: #555;
+  font-size: 18px;
+  display: inline-block;
+  white-space: pre; /* important if using \A for line breaks */
+  text-align: center;
+  margin-left: 6px;
+  margin-right: 24px;
+
+  /* rotate 45 degrees clockwise */
+  transform: rotate(45deg);
+  transform-origin: center; /* rotate around the center of the icon */
+}
+.a-pin-bar-main-wrapper .k-menu-scroll-button.k-scroll-left {
+    width: 30px !important;
+    margin-left: 30px !important;
+}
+.a-pin-bar-main-wrapper .k-menu-scroll-button.k-scroll-right {
+    width: 30px !important;
+    margin-right: 6px !important;
+}
+/*pin bar 'no records' alignment*/
+.a-pinToTabContainerLabel {
+    position: relative !important;
+    top: -6px !important;
+}
+
+
+/*================================================== hover card like Person/Company ==================================================*/
+.a-card.k-widget.a-hover-card {
+    border-width: 0px !important;
+    border-left: solid 5px var(--app-blue) !important;
+    box-shadow: var(--app-box-shadow) !important; /*shadow for menu outer box*/
+    border-radius: 4px !important;
+}
+
+
+/*================================================== date control ==================================================*/
+.k-calendar-container.k-popup.k-group.k-reset.k-state-border-up {
+    border: 0 !important;
+    box-shadow: var(--app-box-shadow) !important;
+}
+
+
+/*================================================== favorites menu ==================================================*/
+#aptify_shell_favoritesParent {
+    border-width: 0px !important;
+    box-shadow: var(--app-box-shadow) !important; /*shadow for menu outer box*/
+    border-radius: 6px !important;
+}
+#aptify_shell_favoritesParent ul.k-group.k-panel[role="group"][aria-hidden="false"] {
+    padding-top: 5px;
+    padding-bottom: 5px;
+}
+#aptify_shell_favoritesParent .a-shell-item-header {
+    border-left: 0 !important; /*override the default left accent effect that is in the file*/
+    margin-left: 0 !important;
+}
+#aptify_shell_favoritesParent .a-shell-item {
+    padding-top: 1px !important;
+    padding-left: 34px !important;
+}
+#aptify_shell_favoritesParent .a-shell-item:hover {
+    border-left: solid 5px var(--app-blue);
+    padding-left: 29px !important;
+}
+#aptify_shell_favoritesParent .a-shell-inner-header li.k-item .k-image { /*make the icon move inward inside the text menu*/
+    position: absolute !important;
+    z-index: 5;
+    margin-left: 12px !important;
+}
+#aptify_shell_favoritesParent .a-shell-inner-header ul.k-panel li.k-item span.k-link.k-state-selected div.a-shell-item { /*padding for alinment*/
+    padding-top: 1px !important;
+    padding-left: 29px !important;
+}
+#aptify_shell_favoritesParent .a-favoritegroup-record-move {
+    border: solid 1px #488BD2;
+    border-radius:3px;
+    margin-right: 5px;
+    margin-top: 3px;
+}
+#aptify_shell_favoritesParent .a-favoritegroup-record-move:hover {
+    background-color: #488BD2;
+    color: #ffffff;
+}
+#aptify_shell_favoritesParent .a-favoritegroup-toolbar-button.a-favoritegroup-toolbar-button-create {
+    border: solid 1px #488BD2;
+    border-radius: 3px;
+    padding: 0px 5px;
+    margin-right: 10px;
+}
+#aptify_shell_favoritesParent .a-favoritegroup-toolbar-button.a-favoritegroup-toolbar-button-create:hover {
+    background-color: #488BD2;
+    color: #ffffff;
+}
+#aptify_shell_favoritesParent .a-favoritegroup-toolbar {
+    padding: 5px 0px 5px 0px !important;
+    width: 100%;
+    position: relative;
+}
+#aptify_shell_favoritesParent .a-favoritegroup-toolbar::before {
+    content: "Favorites";
+    font-weight: 500;    
+    margin-right: 10px; 
+    margin-left: 10px;
+    font-size: 16px;
+}
+#aptify_shell_favoritesParent .k-item.k-state-active .a-shell-item-header.a-fav-group::after {
+    content: "\2304"; /*down chevron*/
+    font-size: 20px;
+    margin-left: 6px;
+    display: inline-block;
+    position: relative;
+    top: -3px;
+}
+#aptify_shell_favoritesParent .k-item:not(.k-state-active) .a-shell-item-header.a-fav-group::after {
+    content: "\2304";
+    font-size: 20px;
+    margin-left: 6px;
+    display: inline-block;
+    position: relative;
+    top: 2px;
+    transform: rotate(-90deg); /*right chevron*/
+    transform-origin: center;
+}
+#aptify_shell_favoritesParent .a-shell-inner-header {
+    margin-top: 0 !important;
+}
+
+
+/*================================================== user profile menu ==================================================*/
+.user-links {
+    border-width: 0px !important;
+    box-shadow: var(--app-box-shadow) !important; /*shadow for menu outer box*/
+    border-radius: 6px !important;
+}
+.a-shell-toolbar-community-icon {
+    display: none; /*the community site has not existed for a few years*/
+}
+.user-links .changePassword-link, .user-links .a-shell-toolbar-showlogout {
+    padding: 8px !important;
+    border-radius: 3px !important;
+    cursor: pointer;
+}
+.user-links .a-shell-toolbar-showlogout {
+    padding-left: 10px !important;
+}
+.user-links .changePassword-link:hover {
+    background-color: var(--app-selected-menu-background) !important;
+    border-left: solid 5px var(--app-blue);
+    padding-left: 3px !important;
+}
+.user-links .a-shell-toolbar-showlogout:hover {
+    background-color: var(--app-selected-menu-background) !important;
+    border-left: solid 5px var(--app-blue);
+    padding-left: 5px !important;
+}
+
+
+/*================================================== main view rows ==================================================*/
+table.k-selectable tr.k-alt { /* table - alternating row background */
+    background-color: #f9fafb !important;
+}
+table.k-selectable tr:hover { /* table - hover state — applies to all rows, overrides alt color */
+    background-color: #e8f1ff !important;
+}
+.k-grid-content .k-selectable tr.k-state-selected { /* table - when the row is selected */
+    background-color: #d0e3ff !important;
+}
+
+
+/*================================================== dashboards ==================================================*/
+.a-dashboard-part-titlebar {
+    font-weight: 400; /*make slightly bolder*/
+}
+.a-dashboard-part-content-wrapper:not(:has(.a-dashboard-buttonbar)) {
+    border-top: solid 5px var(--app-blue) !important;
+}
+/* Hide ftp-not-supported if exists */
+.a-dashboard-part-inner:has(.ftp-not-supported) .ftp-not-supported {
+  display: none;
+}
+/* Add a new message using ::before */
+.a-dashboard-part-inner:has(.ftp-not-supported)::before {
+  content: "Add dashboard parts to view on the dashboard.";
+  display: block;
+  text-align: center;
+  color: #8696A7;
+  font-size: 1.05em;
+  padding: 20px;
+  font-style: italic;
+}
+
+
+/*================================================== for field focus highlights ==================================================*/
+/*when input boxes/elements are in focus, remove the box-shadow*/
+.k-textbox:focus, .k-autocomplete.k-state-focused, .k-picker-wrap.k-state-focused, .k-numeric-wrap.k-state-focused, .k-dropdown-wrap.k-state-focused, .k-multiselect.k-header.k-state-focused, .ftp-linkbox-textbox:focus, .k-textbox:focus, .k-numeric-wrap .k-input:focus {
+    box-shadow: none !important;
+}
+/*action button container attached to the linkbox*/
+.ftp-field:has(.ftp-linkbox-textbox input:focus) .a-linkbox-button-group {
+    border-right: 1px solid var(--app-blue);
+    border-top: 1px solid var(--app-blue);
+    border-bottom: 1px solid var(--app-blue);
+}
+
+
+/*================================================== tooltips ==================================================*/
+/*adding some padding to tooltip to make it look aligned*/
+.k-tooltip-content {
+    padding-right: 15px;
+    padding-left: 15px;
+    padding-top: 5px;
+    padding-bottom: 2px;
+}
+.a-tooltipimage {
+    height: 20px;
+    width: 20px;
+}
+.a-tooltipcontent {
+    padding-left: 10px;
+}
+.k-tooltip-content .a-popup-auth-bg {
+    background-color: inherit !important;
+}
+.k-tooltip-content .a-popup-auth-bg div {
+    color: #fff !important;
+}
+
+
+/*================================================== Header and right settings menu ==================================================*/
+/*reset manual alignment of header icons*/
+.a-shell-toolbar-status-area.a-more-options-menu {
+    display: flex !important;
+    align-items: center !important;
+}
+.a-menu-option.fav-links {
+    margin-top: 0 !important;
+}
+.a-help-menu-option.configure-help-panel, 
+.a-menu-option.configure-option-panel {
+    display: flex !important;
+    align-items: center !important;
+    margin-top: 0 !important;
+    padding: 0 !important;
+}
+.a-help-menu-option.configure-help-panel {
+    margin-right: 10px;
+}
+/*add the circle hover effect*/
+.aptify-shell-header [class*="menu-option"] .fa {
+    padding: 4px !important;
+    border-radius: 50% !important;
+    width: 24px !important;
+    height: 24px !important;
+    line-height: 24px !important;
+}
+.aptify-shell-header [class*="menu-option"] .fa:hover {
+    background-color: var(--app-icon-hover--background-color) !important
+}
+/*make size of header icons slightly bigger*/
+.aptify-shell-header [class*="menu-option"] .fa::before {
+    font-size: 22px !important;
+}
+.a-shell-toolbar-configure-slide-out {
+    height: 100% !important; /*make the height of the right menu container 100% instead of 90%"*/
+    border-top: 0 !important;
+    border-bottom: 0 !important;
+}
+.a-shell-toolbar-configure-slide-out span.fa {
+    padding-bottom: 3px !important; /*align the icon with the text*/
+}
+.a-shell-toolbar-configure-slide-out > div[class*="a-shell-toolbar-"]:not(.a-shell-toolbar-version-number) {
+    padding-left: 15px !important;
+}
+.a-shell-toolbar-configure-slide-out > div[class*="a-shell-toolbar-"]:not(.a-shell-toolbar-version-number):hover {
+    padding-left: 10px !important;
+    border-left: solid 5px var(--app-blue);
+    background-color: var(--app-selected-menu-background) !important;
+    border-radius: 3px;
+}
+.a-shell-toolbar-compactMode {
+    display: none; /*compact mode is not working great with the new css. the new css already implements half of compact mode 100% of the times */
+}
+.aptify-shell-header .a-menu-option.a-pending-changes .fa-pencil-square-o::before {
+    content: "\f252"; /*pending changes icon*/
+    font-size: 20px !important;
+}
+
+
+/*================================================== Entity Browser updates ==================================================*/
+/*entity browser 'More' menu*/
+.a-entity-browser-toolbar-more-actions .k-widget.k-listview {
+    box-shadow: var(--app-box-shadow) !important;
+    border-radius: 0px 0px 6px 6px !important;
+}
+.a-entity-browser-toolbar-more-actions .k-widget.k-listview {
+    padding: 0 !important;
+    border: 0 !important;
+}
+.a-toolbar-moreActions-item {
+    padding: 5px 2px 5px 18px !important;
+    border-radius: 3px !important;
+
+}
+.k-listitem.a-toolbar-moreActions-item:hover {
+    border-left: solid 5px var(--app-blue) !important;
+    background-color: var(--app-selected-menu-background) !important;
+    padding-left: 13px !important;
+}
+.a-entity-browser-toolbar-more-actions .k-widget.k-listview .a-toolbar-moreActions-item:hover {
+    color: unset !important;
+}
+/*show a message when there are no views in the entity browser screen*/
+.a-view-listview.a-toggelToGridView:empty::before {
+  content: "No items to display. Create a new View (More -> Create View) to display data of this entity.";
+  display: block;
+  text-align: center;
+  color: #8696A7;
+  font-size: 1.05em;
+  padding: 20px;
+  font-style: italic;
+}
+.k-content .a-search-wrapper .a-search .a-search { /*the searchbox for views*/
+    font-size: 1em !important;
+}
+/*framework is setting this to background-color: none which is not recognized by browser seems like but it also has the !important tag so this css is not overriding it */
+.a-search-wrapper .k-autocomplete.a-search:hover:focus, .a-search-wrapper .k-autocomplete.k-state-hover.a-search, .a-search-wrapper .k-autocomplete.k-state-focused.a-search, .a-search-wrapper input:focus {
+    background-color: #ffffff !important; 
+ }
+ /*cards for views*/
+.a-entity-browser-view {
+    border-radius: 6px !important;
+    padding-top: 10px !important;
+}
+.a-entity-browser-view:hover {
+    padding-top: 6px !important;
+    border-top: solid 5px var(--app-blue) !important;
+}
+.a-entity-browser-view .a-gridViewContent .a-grid-view-description {
+    font-size: 14px;
+    word-break: auto-phrase; /*doesn't make sense to break a word in the middle for wrapping*/
+}
+
+
+/*================================================== checkbox 2px bigger ==================================================*/
+/*checkboxes on views*/
+.k-grid-content input[type="checkbox"] + label::before, .k-grid-header input[type="checkbox"] + label::before {
+    height: 14px !important;
+    width: 14px !important;
+    margin-bottom: 1.5px !important;
+}
+.k-grid-content input[type="checkbox"]:checked + label::before, .k-grid-header input[type="checkbox"]:checked + label::before {
+    font: normal normal normal 14px FontAwesome !important; 
+}
+/*checkboxes on forms*/
+input[type="checkbox"].ftp-checkbox + label.ftp-checkbox-label:before, label.ftp-checkbox-label > input[type="checkbox"].ftp-checkbox + span.ftp-checkbox-label-text:before {
+    margin-bottom: 1.5px !important;
+}
+
+
+/*================================================== most recently used items ==================================================*/
+.a-dashboard-part[data-caption="Most Recently Used Items"] .a-dashboard-part-inner {
+    padding: 5px !important;
+}
+.a-dashboard-part[data-caption="Most Recently Used Items"] table.k-selectable tr:hover {
+    background-color: var(--app-selected-menu-background) !important;
+}
+.a-dashboard-part[data-caption="Most Recently Used Items"] table.k-selectable tr td.a-mru-row-icon {
+    padding-left: 5px !important;
+    padding-right: 1px !important;
+    padding-top: 0 !important;
+    padding-bottom: 3px !important;
+    border-top-left-radius: 3px;
+    border-bottom-left-radius: 3px;
+    width: 24px;
+}
+.a-dashboard-part[data-caption="Most Recently Used Items"] table.k-selectable tr td.a-mru-row-link {
+    padding-left: 1px !important;
+    padding-right: 3px !important;
+    border-top-right-radius: 3px;
+    border-bottom-right-radius: 3px;
+    padding-top: 0 !important;
+    padding-bottom: 0 !important;
+}
+.a-dashboard-part[data-caption="Most Recently Used Items"] table.k-selectable tr td.a-mru-row-link .a-mru-record-link {
+    padding-top: 5px;
+    padding-bottom: 5px;
+    display: block;
+    height: 100%;
+    width: 100%;
+    text-decoration: none;
+    color: var(--app-font-color) !important;
+    overflow: hidden;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+    box-sizing: border-box;
+}
+.a-dashboard-part[data-caption="Most Recently Used Items"] table.k-selectable tr td.a-mru-row-link .a-mru-record-link:hover {
+    color: var(--app-font-color) !important;
+}
+
+
+/*================================================== view pager ==================================================*/
+.k-pager-wrap .k-link.k-pager-nav {
+    margin: 0 !important;
+    padding: 0 !important;
+}
+.k-pager-wrap .k-link.k-pager-nav .k-icon {
+    border-radius: 50%;
+    margin: 0px 5px 0px 5px !important;
+    width: 30px !important;
+    height: 30px !important;
+    /*border: solid 1px black !important;*/
+}
+.k-pager-wrap .k-link.k-pager-nav .k-icon:hover {
+    background-color: var(--app-icon-hover--background-color) !important;
+}
+.k-pager-wrap .k-pager-first span.k-i-arrow-end-left::before {
+    content: "\e00b";
+    font: 30px/1 "WebComponentsIcons" !important;
+    text-indent: 0 !important;
+    left: -1px;
+}
+.k-pager-wrap .k-pager-last span.k-i-arrow-end-right::before {
+    content: "\e009";
+    font: 30px/1 "WebComponentsIcons" !important;
+    text-indent: 0 !important;
+    left: 1px;
+}
+.k-pager-wrap .k-i-arrow-60-left::before {
+    font-size: 30px !important;
+    left: -4px;
+}
+.k-pager-wrap .k-i-arrow-60-right::before {
+    font-size: 30px !important;
+    left: 2px;
+}
+.k-pager-wrap .k-pager-first span.k-i-arrow-end-left, 
+.k-pager-wrap .k-pager-last span.k-i-arrow-end-right {
+    width: 1em !important;
+}
+
+
+/*================================================== subtype movement buttons ==================================================*/
+.a-subType-movement-buttons .k-button {
+    /*border: solid 1px black;*/
+    width: 32px !important;
+    height: 32px !important;
+    border-radius: 50% !important;
+    margin-right: 0 !important;
+}
+.a-subType-movement-buttons .k-button:hover {
+    background-color: var(--app-icon-hover--background-color) !important;
+}
+.a-subType-movement-buttons .k-button::before {
+    font-size: 24px !important;
+}
+
+
+/*================================================== smaller items ==================================================*/
+/*little widget boxes on summary screen*/
+.ftp-group-box, .k-widget.ftp-group-box {
+    box-shadow: none !important;
+}
+/*fieldset borders*/
+fieldset {
+    border-radius: 4px;
+}
+
+
+/*================================================== relevent shortcuts ==================================================*/
+.a-menu-relevant-shortcuts {
+    display: inline-flex;
+    align-items: center;
+    vertical-align: middle;
+}
+.a-menu-relevant-shortcuts::before {
+    content: "\f101";
+    font-family: "FontAwesome";
+    color: var(--app-icon-color) !important;
+    font-weight: normal;
+    display: inline-block;
+    margin-right: 7px;
+    vertical-align: middle;
+    font-size: 14px;
+    line-height: 14px;
+    padding-top: 1px;
+}
+.a-menu-relevant-shortcuts:empty::before {
+  display: none;
+}
+.a-shortcut-menu {
+    margin-right: 10px !important;
+}
+.a-shortcut-menu::before {
+    content: "\0399";
+    line-height: 1em;
+    font-weight: lighter;
+    margin-right: 10px;
+}
+.a-formtemplate-menu .a-current-menu {
+    margin-right: 30px !important; /*some more space after the first menu*/
+}
+
+
+/*================================================== view properties/creation ==================================================*/
+/*attempt to fix the view properties - this is different from the other forms and is hardcoded to be different for some reason*/
+/*there is no completely fixing it with css overrides here, we will attempt to make it usable*/
+.a-create-view-buttons>span {
+    font-weight: normal !important;
+}
+.ftl:not(.ftl-r) {
+    font-size: .95em; 
+}
+/*remove box shadows*/
+.a-viewfilters .k-autocomplete.k-state-focused, .a-viewsorts .k-autocomplete.k-state-focused {
+    box-shadow: none !important;
+}
+/*add the help text*/
+.a-viewfilters.k-widget:not(:has(.a-filter.k-widget))::before {
+    content: "No filters selected. Select the [+] icon to add a filter.";
+    display: block;
+    text-align: center;
+    color: #8696A7;
+    font-size: 14px;
+    padding: 20px;
+    font-style: italic;
+}
+.ftl.a-create-view-dialog div[data-layoutkey="Aptify.Views.BottomArea.TabControl.Sorting"] .k-listview-content:empty::before {
+    content: "Add one or more fields to sort by searching above. Then select up or down arrows to change sort direction.";
+    display: block;
+    text-align: center;
+    color: #8696A7;
+    font-size: 14px;
+    padding: 20px;
+    font-style: italic;
+}
+.ftl.a-create-view-dialog .a-fieldlist-li {
+    font-weight: 500 !important;
+}
+/*move the sub-menu tab down to make space, the Name and ViewType fields above don't have space to be the standard size*/
+.ftl.a-create-view-dialog div[data-formtemplatepartid="108006"] {
+    top: 66px !important;
+}
+/*make the top part more height to make room for Name And ViewType to be standard size*/
+.ftl.a-create-view-dialog div[data-formtemplatepartid="107963"] {
+    height: 66px !important;
+}
+/*Name field*/
+.ftl.a-create-view-dialog div[data-formtemplatepartid="107961"],
+.ftl.a-create-view-dialog div[data-formtemplatepartid="107961"] .k-textbox {
+    height: unset !important;
+}
+/*View Type field*/
+.ftl.a-create-view-dialog div[data-formtemplatepartid="107962"] {
+    height: unset !important;
+    top: 34px !important;
+}
+.ftl.a-create-view-dialog div[data-formtemplatepartid="107962"] .k-dropdown .k-dropdown-wrap,
+.ftl.a-create-view-dialog div[data-formtemplatepartid="107962"] .k-dropdown .k-dropdown-wrap .k-input {
+    height: 2em !important;
+    line-height: 2em !important;
+}
+/*filters tab*/
+.ftl.a-create-view-dialog div[data-layoutkey="Aptify.Views.BottomArea.TabControl.Filters"] .fields-grouping-row .k-textbox {
+    line-height: 2em !important;
+    height: auto !important;
+    margin-right: 3px;
+}
+/*fix the linkboxes where they are thinner than the normal size*/
+.ftl.a-create-view-dialog div[data-layoutkey="Aptify.Views.BottomArea.TabControl.Advanced.Configuration"] .a-linkbox-button-group,
+.ftl.a-create-view-dialog div[data-layoutkey="Aptify.Views.BottomArea.TabControl.Advanced.Scheduling.Tabs.OutputOptions"] .a-linkbox-button-group,
+.ftl.a-create-view-dialog div[data-layoutkey="Aptify.Views.ChartViews.Tabs.Display"] .a-linkbox-button-group,
+.ftl.a-create-view-dialog div[data-layoutkey="HTML5.Pivot Grid Views.Tabs"] .a-linkbox-button-group {
+    margin-top: 0px;
+    height: 20px;
+}
+.ftl.a-create-view-dialog div[data-layoutkey="Aptify.Views.BottomArea.TabControl.Advanced.Configuration"] .a-linkbox-button-group .a-linkbox-search-record,
+.ftl.a-create-view-dialog div[data-layoutkey="Aptify.Views.BottomArea.TabControl.Advanced.Configuration"] .a-linkbox-button-group .a-linkbox-add-record,
+.ftl.a-create-view-dialog div[data-layoutkey="Aptify.Views.BottomArea.TabControl.Advanced.Configuration"] .a-linkbox-button-group .a-linkbox-clear-record,
+.ftl.a-create-view-dialog div[data-layoutkey="Aptify.Views.BottomArea.TabControl.Advanced.Scheduling.Tabs.OutputOptions"] .a-linkbox-button-group .a-linkbox-search-record,
+.ftl.a-create-view-dialog div[data-layoutkey="Aptify.Views.BottomArea.TabControl.Advanced.Scheduling.Tabs.OutputOptions"] .a-linkbox-button-group .a-linkbox-add-record,
+.ftl.a-create-view-dialog div[data-layoutkey="Aptify.Views.BottomArea.TabControl.Advanced.Scheduling.Tabs.OutputOptions"] .a-linkbox-button-group .a-linkbox-clear-record, 
+.ftl.a-create-view-dialog div[data-layoutkey="Aptify.Views.ChartViews.Tabs.Display"] .a-linkbox-button-group .a-linkbox-search-record, 
+.ftl.a-create-view-dialog div[data-layoutkey="Aptify.Views.ChartViews.Tabs.Display"] .a-linkbox-button-group .a-linkbox-add-record,
+.ftl.a-create-view-dialog div[data-layoutkey="Aptify.Views.ChartViews.Tabs.Display"] .a-linkbox-button-group .a-linkbox-clear-record,
+.ftl.a-create-view-dialog div[data-layoutkey="HTML5.Pivot Grid Views.Tabs"] .a-linkbox-button-group .a-linkbox-search-record, 
+.ftl.a-create-view-dialog div[data-layoutkey="HTML5.Pivot Grid Views.Tabs"] .a-linkbox-button-group .a-linkbox-add-record,
+.ftl.a-create-view-dialog div[data-layoutkey="HTML5.Pivot Grid Views.Tabs"] .a-linkbox-button-group .a-linkbox-clear-record {
+    height: 20px;
+    left: 5px;
+}
+.ftl.a-create-view-dialog div[data-formtemplatepartid="109458"] {
+    font-size: 12px; /*make font smaller as its wrapping to third line*/
+}
+.ftl.a-create-view-dialog div[data-formtemplatepartid="194835"] {
+    width: 180px !important; /*is load advanced sql is cutting off when the font is larger*/
+}
+.ftl.a-create-view-dialog div[data-layoutkey="Aptify.Views.BottomArea.TabControl.Advanced.Configuration.ShowPreviewPane"] {
+    top: 158px !important;
+}
+/*headers/field names on filters -> field pick list are too big*/
+.ftl.a-create-view-dialog .a-fieldname-wrap h3 {
+    font-size: 1.1em !important;
+}
+/*fields tab*/
+.ftl.a-create-view-dialog div[data-layoutkey="Aptify.Views.BottomArea.TabControl.Fields"] .k-textbox {
+    line-height: 2em !important;
+    height: auto !important;
+}
+.ftl.a-create-view-dialog div[data-layoutkey="Aptify.Views.BottomArea.TabControl.Fields"] .k-dropdown-wrap .k-input {
+    line-height: 2em !important;
+}
+/*sort tab*/
+.ftl.a-create-view-dialog div[data-layoutkey="Aptify.Views.BottomArea.TabControl.Sorting"] .k-input {
+    line-height: 2em !important;
+    height: auto !important;
+}
+
+
+
+
+
+
