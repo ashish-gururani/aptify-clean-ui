@@ -18,6 +18,6 @@ Cleaner UI for Aptify with CSS updates
     cleanUIJs.type = 'text/javascript';
     document.head.appendChild(cleanUIJs);
     ```
-1. Optionally copy the new logo files by overriding the styles/images/Aptify-Logo-81x40.png and styles/images/Aptify-Logo-148x73.png
+1. Optionally copy the new logo files by overriding the styles/images/Aptify-Logo-81x40.png and styles/images/Aptify-Logo-148x73.png (not included in this repo)
 1. Copy the new loading files by overriding the styles/images/ball-traiangle-loading.svg and styles/images/ball-triangle-loading-small.svg
 1. In index.html, find this Aptify.framework.utility.UI.showWaitIndicator("Loading Application..."); and change to Aptify.framework.utility.UI.showWaitIndicator("")
