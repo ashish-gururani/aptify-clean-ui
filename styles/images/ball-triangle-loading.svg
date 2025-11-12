@@ -1,3 +1,4 @@
+<!-- By Ashish Gururani - updated the animation to be a loading ring -->
 <svg width="57" height="57" viewBox="0 0 57 57" xmlns="http://www.w3.org/2000/svg">
   <!-- Background track -->
   <circle cx="28.5" cy="28.5" r="25" fill="none" stroke="#ddd" stroke-width="6"/>
