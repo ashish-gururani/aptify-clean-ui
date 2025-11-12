@@ -1,0 +1,17 @@
+<svg width="57" height="57" viewBox="0 0 57 57" xmlns="http://www.w3.org/2000/svg">
+  <!-- Background track -->
+  <circle cx="28.5" cy="28.5" r="25" fill="none" stroke="#ddd" stroke-width="6"/>
+  
+  <!-- Spinner ring -->
+  <circle cx="28.5" cy="28.5" r="25" fill="none" stroke="url(#blueGrad)" stroke-width="6" stroke-linecap="round"
+          stroke-dasharray="78.5 157" stroke-dashoffset="0">
+    <animateTransform attributeName="transform" type="rotate" from="0 28.5 28.5" to="360 28.5 28.5" dur="1s" repeatCount="indefinite"/>
+  </circle>
+  
+  <defs>
+    <linearGradient id="blueGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#2095F2"/>
+      <stop offset="100%" stop-color="#72b1f4"/>
+    </linearGradient>
+  </defs>
+</svg>
