@@ -1,6 +1,9 @@
 # aptify-clean-ui
 Cleaner UI for Aptify with CSS updates
 
+# Version(s) Support
+The css is written against Aptify 7.3 but the UI has not changed in years so it should work with previous or future versions also. 
+
 # Install Steps
 1. Copy the aptify-clean-ui.css to the styles folder
 1. Copy the aptify-clean-ui.js to the script folder
