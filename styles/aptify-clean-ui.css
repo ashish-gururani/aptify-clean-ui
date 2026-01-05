@@ -1,7 +1,7 @@
 /*====================================================================================================*/
 /*Css updates and overrides to make the UI cleaner, align better and provide a better UX experience   */
-/*Created By: Ashish Gururani
-/*Date: 11/12/2025*/
+/*Created By: Ashish Gururani                                                                         */
+/*Date: 11/12/2025                                                                                    */
 /*====================================================================================================*/
 
 :root {
@@ -137,16 +137,17 @@
 
 /*================================================== Main structure of the page ==================================================*/
 .main-container {
-    background-color: #FFFFFF !important;
+    background-color: #ffffff !important;
 }
 .aptify-shell-header {
-
+    user-select: none;
 }
 /* Left menu */
 .a-shell-slide-out {
     width: 280px !important;
     box-shadow: none !important;
 	border-right: solid 1px #e2e6ed !important;
+    user-select: none;
 }
 /* Main content area */
 .a-shell-main {
@@ -335,7 +336,7 @@
     border-right: none;
 }
 .a-linkbox-button-group .k-button .fa {
-    color: #344456;
+    color: var(--app-font-color);
     padding-top: 1px;
 }
 /*linkbox required field with red*/
@@ -362,7 +363,7 @@
     align-items: center;
     justify-content: center;
     min-height: 100vh;
-    transform: translateY(-10%);
+    transform: translateY(-5%);
 }
 .login_heightcontainer {
     display: flex;
@@ -1298,6 +1299,9 @@ fieldset {
     height: auto !important;
     margin-right: 3px;
 }
+.ftl.a-create-view-dialog div[data-layoutkey="Aptify.Views.BottomArea.TabControl.Filters"] .a-viewfilters-wrap .a-filter.k-widget .a-fieldname.k-content.a-filterpart .k-input {
+    height: 2.3em;
+}
 /*fix the linkboxes where they are thinner than the normal size*/
 .ftl.a-create-view-dialog div[data-layoutkey="Aptify.Views.BottomArea.TabControl.Advanced.Configuration"] .a-linkbox-button-group,
 .ftl.a-create-view-dialog div[data-layoutkey="Aptify.Views.BottomArea.TabControl.Advanced.Scheduling.Tabs.OutputOptions"] .a-linkbox-button-group,
@@ -1330,9 +1334,14 @@ fieldset {
 .ftl.a-create-view-dialog div[data-layoutkey="Aptify.Views.BottomArea.TabControl.Advanced.Configuration.ShowPreviewPane"] {
     top: 158px !important;
 }
-/*headers/field names on filters -> field pick list are too big*/
+/*headers/field names on filters -> field pick list are too big*/ /*this is not applying as the popup is not inside .ftl.a-create-view-dialog it seems*/
 .ftl.a-create-view-dialog .a-fieldname-wrap h3 {
     font-size: 1.1em !important;
+}
+/*sort tab*/
+.ftl.a-create-view-dialog div[data-layoutkey="Aptify.Views.BottomArea.TabControl.Sorting"] .k-input {
+    line-height: 2em !important;
+    height: auto !important;
 }
 /*fields tab*/
 .ftl.a-create-view-dialog div[data-layoutkey="Aptify.Views.BottomArea.TabControl.Fields"] .k-textbox {
@@ -1342,14 +1351,101 @@ fieldset {
 .ftl.a-create-view-dialog div[data-layoutkey="Aptify.Views.BottomArea.TabControl.Fields"] .k-dropdown-wrap .k-input {
     line-height: 2em !important;
 }
-/*sort tab*/
-.ftl.a-create-view-dialog div[data-layoutkey="Aptify.Views.BottomArea.TabControl.Sorting"] .k-input {
-    line-height: 2em !important;
-    height: auto !important;
+/*fields tab - align the left field list, middle arrows, and right field list*/
+.ftl.a-create-view-dialog .a-viewfields {
+    padding: 0 !important;
+    margin: 5px 0 5px 3px;
+    display: flex !important;
+    width: 100% !important;
+}
+.ftl.a-create-view-dialog .a-viewfields .a-buttons {
+    width: 60px !important;
+}
+.ftl.a-create-view-dialog .a-viewfields .a-available, 
+.ftl.a-create-view-dialog .a-viewfields .a-selected {
+    flex: 1 !important;
+    width: unset !important;
 }
 
+/*fields tab - when items in selected field list is not in focus/selected, hide child elements to make dragging easier */
+.a-fieldlist-li:not(.k-state-selected) .view-field-hyperlink,
+.a-fieldlist-li:not(.k-state-selected) .view-field-target-entity,
+.a-fieldlist-li:not(.k-state-selected) .view-field-target-field,
+.a-fieldlist-li:not(.k-state-selected) .view-field-aggregate-functions,
+.a-fieldlist-li:not(.k-state-selected) hr {
+    display: none !important;
+}
+.ftl.a-create-view-dialog .view-field-aggregate-functions {
+    text-align: center;
+}
+.ftl.a-create-view-dialog .view-field-aggregate-functions > * {
+    display: block;
+    margin: 0 auto;
+}
+/*fields tab - make the headers of selected fields in the pane non-bold a bit smaller*/
+.ftl.a-create-view-dialog .a-fieldlist-li .view-field-hyperlink,
+.ftl.a-create-view-dialog .a-fieldlist-li .view-field-target-entity,
+.ftl.a-create-view-dialog .a-fieldlist-li .view-field-target-field,
+.ftl.a-create-view-dialog .a-fieldlist-li .view-field-aggregate-functions {
+    font-size: 13px !important;
+    font-weight: 400 !important;
+}
+.ftl.a-create-view-dialog .a-fieldlist-li .view-field-target-entity .k-input,
+.ftl.a-create-view-dialog .a-fieldlist-li .view-field-target-field .k-input {
+    background-color: transparent;
+    align-items: center;
+    white-space: nowrap; 
+    text-overflow: ellipsis;
+    text-align: center;
+    border: 0;
+}
+/*fields tab - selected items pane, add icon to denote that this can be expanded and moved up/down*/
+.ftl.a-create-view-dialog .a-fieldlist .view-field-detail::after {
+    font-family: "FontAwesome";
+    font-weight: 900;                    
+    content: "\f0d7\00a0\00a0\f0dc\00a0";/* caret-down + arrows-v */
+    position: absolute;
+    right: 0;
+    top: 50%;
+    transform: translateY(-50%);
+    opacity: 0.6;
+    font-size: 15px;
+}
 
-
-
-
-
+/*================================================== file upload button fix ==================================================*/
+div[data-fieldname="FilePath"] .k-button.ftp-textbox-button {
+    width: 32px !important;
+    height: 34px !important;
+    margin-left: 0 !important;
+    padding-bottom: 0 !important;
+    border: solid 1px #dddddd !important;
+    margin-left: 4px !important;
+}
+div[data-fieldname="FilePath"] .k-dropzone {
+    margin-left: 7px; /*compensate for the -7x margin that the child has that can't be removed with important tag */
+}
+div[data-fieldname="FilePath"] .k-button.k-upload-button {
+    background-color: #f0f0f0;
+    width: 32px !important;
+    min-width: 32px !important;
+    padding: 0 !important;
+    margin: 0 !important;
+    position: relative !important;
+    border: none !important;
+}
+div[data-fieldname="FilePath"] .k-button:hover:not(.k-state-disabled) {
+    background: #f0f0f0 !important;
+}
+div[data-fieldname="FilePath"] .k-upload-button span::before {
+  content: "\f093"; /* fa-upload */
+  font-family: FontAwesome;
+  font-size: 16px;
+  line-height: 1;
+  display: inline-block;
+  color: var(--app-font-color);
+  top: 4px;
+  position: relative;
+}
+div[data-fieldname="FilePath"] .k-upload-button span img {
+  display: none;
+}
