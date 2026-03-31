@@ -7,7 +7,7 @@ The css is written against Aptify 7.3 but the UI has not changed in years so it 
 # Install Steps
 1. Copy the aptify-clean-ui.css to the styles folder
 1. Copy the aptify-clean-ui.js to the script folder
-1. In index.html, copy paste the following code to load out files towards the very end. Insert after kendo.culture(Aptify.framework.configuration.cultureName);
+1. In index.html, copy paste the following code to load our files towards the very end. Insert after kendo.culture(Aptify.framework.configuration.cultureName);
     ```
     //inject the new css
     var cleanUICss = document.createElement('link');
