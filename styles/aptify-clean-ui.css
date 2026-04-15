@@ -27,8 +27,8 @@
 
 /*================================================== change main menu styling ==================================================*/
 .a-shell-app-list li.k-item span.k-link {
-	line-height: 1em;
-    margin-right: 14px;
+	line-height: 2em;
+    margin-right: 6px;
 }
 .a-shell-app-list .a-shell-item-header {
 	line-height: 1em;
@@ -55,7 +55,9 @@
 .a-shell-toolbar-showconfigureapplications, .a-shell-toolbar-showConfigureServices {
     margin-top: 10px;
 }
-#aptify_shell_panelBarParent .applist-title .a-shell-slideout-icon {
+/*hide the menu in the collapased mode since we don't have styling for it*/
+#aptify_shell_panelBarParent.HideBlock #aptify_shell_appsListParent,
+#aptify_shell_panelBarParent.HideBlock .secondary-k-button.a-shell-toolbar-showconfigureapplications.fa.fa-gear {
     display: none !important;
 }
 #aptify_shell_panelBarParent .applist-title {
@@ -76,6 +78,29 @@
   display: inline-block;
   vertical-align: middle;
   margin-bottom: 3px;
+}
+/*disable the collape and expantion of the hamburger menu because that features needs changes to too many other things*/
+#aptify_shell_panelBarParent.ShowBlock .a-shell-slideout-icon {
+    display: none !important;
+}
+#aptify_shell_panelBarParent.ShowBlock .a-shell-slideout-icon {
+    pointer-events: none; /* prevents any click or hover */
+    cursor: default;      /* optional: show normal cursor */
+}
+.a-shell-slideout-icon-back {
+	visibility: hidden;
+}
+.a-shell-item-header {
+    position: relative;
+}
+.a-shell-item-header::after {    
+    content: "\f054"; /* chevron-right in FA v4 */
+    font-family: FontAwesome;
+    position: absolute;
+    right: 2px;
+    opacity: 0.6;
+    top: 8px;
+    font-size: 12px;
 }
 
 
@@ -104,6 +129,7 @@
     background: none;
     font-weight: normal;
     border-left: none;
+    margin-right: 12px;
 }
 .k-link.k-state-selected .a-shell-item {    
     background-color: var(--app-selected-menu-background);
@@ -124,14 +150,6 @@
 }
 .k-group.k-panel {
     border-bottom: none; /*remove the bottom border line on submenu*/
-}
-/*disable the collape and expantion of the hamburger menu because that features needs changes to too many other things*/
-.a-shell-slideout-icon {
-    pointer-events: none; /* prevents any click or hover */
-    cursor: default;      /* optional: show normal cursor */
-}
-.a-shell-slideout-icon-back {
-	visibility: hidden;
 }
 
 
@@ -377,6 +395,21 @@
     margin: 0;
     margin-top: 30px;
 }
+/* 1. Hide everything inside the footer */
+.login_footerdiv > .login_footercolumns.w-row,
+.login_footerdiv > .login_footer,
+.login_footerdiv > .footer-privacy {
+    display: none;
+}
+/* 2. Add your custom content */
+.login_footerdiv::after {
+    content: "© 2026 Aptify by Monentive. All Rights Reserved.";
+    display: block;
+    text-align: center;
+    font-size: 12px;
+    color: #666;
+    padding: 10px 0;
+}
 .login_logodiv {
     height: unset !important;;
     padding-top: 0 !important;
@@ -598,7 +631,7 @@
     border-left: solid 5px var(--app-red) !important;
     padding: 10px 10px 0px 10px !important;
 }
-.k-widget.k-window .fa.fa-exclamation-triangle, .k-widget.k-window .fa.fa-bullhorn, .k-widget.k-window .fa.fa-flag {
+.k-widget.k-window .a-confirm-icon .fa.fa-exclamation-triangle, .k-widget.k-window .fa.fa-bullhorn, .k-widget.k-window .fa.fa-flag {
     font-size: 40px; /*make the icon size bigger*/
 }
 .k-widget.k-window .a-confirmation-wnd, .k-widget.k-window .messagebox-popup.k-window-content {
@@ -681,7 +714,7 @@
     box-shadow: var(--app-box-shadow) !important; /*shadow for menu outer box*/
     border-radius: 6px 6px 6px 6px !important;
     border: 0 !important;
-    width: 325px; !important;
+    width: 325px !important;
 }
 .iconDataContainer .iconContainer > div {
     padding-left: 5px !important;
@@ -913,13 +946,23 @@ table.k-selectable tr:hover { /* table - hover state — applies to all rows, ov
 }
 /* Add a new message using ::before */
 .a-dashboard-part-inner:has(.ftp-not-supported)::before {
-  content: "Add dashboard parts to view on the dashboard.";
+  content: "Select one of the Services or add dashboard-parts to view on the dashboard.";
+  white-space: pre-line; /*add a \A above for newline*/
   display: block;
   text-align: center;
   color: #8696A7;
   font-size: 1.05em;
   padding: 20px;
   font-style: italic;
+}
+.a-dashboard-part-inner:has(.ftp-not-supported)::after {
+  content: "\f060"; /* pie chart */
+  display: block;
+  text-align: center;
+  font-family: "FontAwesome";
+  font-weight: 900; /* required for solid icons */
+  font-size: 2em;
+  color: #8696A7;
 }
 
 
@@ -1449,3 +1492,35 @@ div[data-fieldname="FilePath"] .k-upload-button span::before {
 div[data-fieldname="FilePath"] .k-upload-button span img {
   display: none;
 }
+
+/*================================================== fix to show more content in multi column dropdown to not cut-off data after a couple of words ==================================================*/
+.a-KendoMultiColumnDropDown tr td {
+    white-space: normal;
+    vertical-align: top;
+}
+.a-KendoMultiColumnDropDown .combo-td p {
+    margin: 0;
+    padding: 0;
+    display: -webkit-box;
+    -webkit-box-orient: vertical;
+    -webkit-line-clamp: 5;
+    overflow: hidden;
+    /*font-size: 12px;*/
+    margin: 0;
+    padding: 0;
+    white-space: normal;
+    word-break: break-word;
+    line-height: 1.4;
+}
+
+
+/*making dashbard parts headers blue - currently not used, more testing needed
+.fa.fa-expand.fa-right-space.a-toggle-expand {
+    color: white;
+}
+.a-dashboard-part-content-wrapper {
+    background-color: var(--app-blue);
+    color: white;
+}
+*/
+
